@@ -1,5 +1,5 @@
-import "./header.css"
-import Basket from "../basket/basket"
+import "./Header.css"
+import Basket from "../Basket/basket"
 import { Link } from "react-router-dom"
 
 const Header = ({ show, setShow, items, setItems }) => {

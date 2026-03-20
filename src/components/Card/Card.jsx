@@ -1,4 +1,4 @@
-import "./card.css"
+import "./Card.css"
 
 const Card = ({title, price , isNew , description, image,onAddToBasket}) =>{
     return (

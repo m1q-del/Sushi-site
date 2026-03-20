@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Header from "../header/header";
-import Catalog from "../sushiItem/sushiItem";
-import Registr from "../registration/registration";
-
-function App (){
+import Header from "../components/Header/header";
+import CatalogPage from "../pages/CatalogPage/CatalogPage";
+import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
+function App() {
     const [items, setItems] = useState([])
     const [show, setShow] = useState(false)
 
@@ -35,8 +34,14 @@ function App (){
                 />
                 
                 <Routes>
-                    <Route path="/" element={<Catalog addItemsBasket={addItemsBasket} />} />
-                    <Route path="/registration" element={<Registr />} />
+                    <Route 
+                        path="/" 
+                        element={<CatalogPage addItemsBasket={addItemsBasket} />} 
+                    />
+                    <Route 
+                        path="/registration" 
+                        element={<RegistrationPage />} 
+                    />
                 </Routes>
             </div>
         </BrowserRouter>

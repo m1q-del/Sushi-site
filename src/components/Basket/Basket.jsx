@@ -1,4 +1,4 @@
-import "./basket.css"
+import "./Basket.css"
 
 const Basket = ({show, setShow, items, setItems}) => {
 
