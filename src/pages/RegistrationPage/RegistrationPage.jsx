@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginApi } from "../../../API/LoginAPI";
+import { loginApi } from "../../API/LoginAPI";
 import "./Registration.css";
 
 const RegistrationPage = () => {
@@ -111,6 +111,10 @@ const RegistrationPage = () => {
                     >
                         На главную
                     </button>
+
+                    <button
+                    onClick={() => navigate("/login")}
+                    >Есть аккаунт?</button>
                 </form>
             </div>
         </div>

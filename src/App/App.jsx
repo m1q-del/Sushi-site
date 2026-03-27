@@ -3,6 +3,9 @@ import { useState } from "react";
 import Header from "../components/Header/header";
 import CatalogPage from "../pages/CatalogPage/CatalogPage";
 import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
+import Login from "../pages/LoginPage/Login";
+import Auth from "../components/Auth/Auth";
+
 function App() {
     const [items, setItems] = useState([])
     const [show, setShow] = useState(false)
@@ -14,7 +17,7 @@ function App() {
             if (existingItem) {
                 return prevItems.map(item =>
                     item.id === product.id
-                        ? { ...item, quantity: (item.quantity || 1) + 1 }
+                        ? { ...item, quantity: (item.quantity) + 1 }
                         : item
                 )
             } else {
@@ -41,6 +44,17 @@ function App() {
                     <Route 
                         path="/registration" 
                         element={<RegistrationPage />} 
+                    />
+
+
+                    <Route 
+                        path="/login" 
+                        element={<Login />} 
+                    />
+
+                    <Route
+                        path="/auth"
+                        element={<Auth />}
                     />
                 </Routes>
             </div>

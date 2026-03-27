@@ -10,8 +10,7 @@ const Basket = ({show, setShow, items, setItems}) => {
         setItems(prevItems => {
             const updatedItems = prevItems.map(item => {
                 if (item.id === productId) {
-                    const newQuantity = (item.quantity || 1) - 1
-                    return newQuantity > 0 ? { ...item, quantity: newQuantity } : null
+                    return item.quantity - 1 > 0 ? { ...item, quantity: newQuantity } : null
                 }
                 return item
             })
@@ -21,7 +20,7 @@ const Basket = ({show, setShow, items, setItems}) => {
     }
 
     const priceItems = () => {
-        return items.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0)
+        return items.reduce((sum, item) => sum + (item.price * (item.quantity)), 0)
     }
 
     return (
@@ -45,7 +44,7 @@ const Basket = ({show, setShow, items, setItems}) => {
                                         const uniqueKey = String(item.id); 
                                         return (
                                             <li key={uniqueKey}>
-                                                {item.title} - {item.price}₽ x {item.quantity || 1}
+                                                {item.title} - {item.price}₽ x {item.quantity}
                                                 <button onClick={() => removeItem(item.id)}>Удалить товар</button>
                                             </li>
                                         );
