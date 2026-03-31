@@ -1,0 +1,177 @@
+/* Login.css */
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8f5f0 0%, #f0ebe4 100%);
+    padding: 80px 20px 40px;
+}
+
+.login-container {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    padding: 48px;
+    width: 100%;
+    max-width: 480px;
+}
+
+h2 {
+    font-size: 32px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 32px;
+    font-weight: 700;
+}
+
+/* Стили для формы */
+form {
+    width: 100%;
+}
+
+/* Стили для параграфов (если используете <p>) */
+form p {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Стили для input */
+form input {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 300ms ease;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #c4a27a;
+    box-shadow: 0 0 0 4px rgba(196, 162, 122, 0.1);
+}
+
+form input:hover:not(:disabled) {
+    border-color: #c4a27a;
+    background-color: #fef9f4;
+}
+
+form input:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Стили для кнопок */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 300ms ease;
+    margin-bottom: 12px;
+}
+
+button[type="submit"] {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+}
+
+button[type="submit"].loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.cancel-btn {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.cancel-btn:hover:not(:disabled) {
+    background-color: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Стили для ошибки */
+.error-message {
+    background: #fee;
+    color: #e74c3c;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    text-align: center;
+    border: 1px solid #fcc;
+    font-size: 14px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 36px 28px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    form input {
+        padding: 12px 14px;
+        font-size: 15px;
+    }
+    
+    button {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-page {
+        padding: 70px 16px 20px;
+    }
+    
+    .login-container {
+        padding: 28px 20px;
+    }
+    
+    h2 {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+    
+    form p {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    
+    form input {
+        padding: 10px 12px;
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    
+    button {
+        padding: 11px;
+        font-size: 14px;
+    }
+}
