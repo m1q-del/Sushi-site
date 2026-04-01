@@ -1,5 +1,6 @@
 import "./SushiItem.css"
 import Card from "../Card/card"
+import { Generate } from "../../generateId/GenerateId"
 
 export const sushiItems = [
     {
@@ -25,6 +26,14 @@ export const sushiItems = [
         description: "3 шт.",
         isNew: false,
         image: "/src/image/i.webp"  
+    },
+    {
+        id: Generate(),
+        title: item.name,
+        price: item.price,
+        description: item.description,
+        isNew: item.isNew,
+        image: item.image
     }
 ]
 
