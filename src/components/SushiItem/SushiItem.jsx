@@ -27,14 +27,6 @@ export const sushiItems = [
         isNew: false,
         image: "/src/image/i.webp"  
     },
-    {
-        id: Generate(),
-        title: item.name,
-        price: item.price,
-        description: item.description,
-        isNew: item.isNew,
-        image: item.image
-    }
 ]
 
 

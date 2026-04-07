@@ -2,9 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginApi } from "../../API/LoginAPI";
 import "./Registration.css";
-import useUserStore from "../../components/LocalStorage/LocalStorage";
-
-
+import useUserStore from "../../stores/UserStore";
 const RegistrationPage = () => {
     const navigate = useNavigate();
     const saveData = useUserStore();

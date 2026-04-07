@@ -10,6 +10,7 @@ const Basket = ({show, setShow, items, setItems}) => {
         setItems(prevItems => {
             const updatedItems = prevItems.map(item => {
                 if (item.id === productId) {
+                    const newQuantity = item.quantity - 1
                     return item.quantity - 1 > 0 ? { ...item, quantity: newQuantity } : null
                 }
                 return item
@@ -36,7 +37,7 @@ const Basket = ({show, setShow, items, setItems}) => {
                         ) : (
                             <>
                                 <ul>
-                                    {items.map((item, index) => {
+                                    {items.map((item) => {
                                         if (!item || typeof item.id === 'undefined') {
                                             return null;
                                         }

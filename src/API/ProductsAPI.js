@@ -27,12 +27,12 @@ export async function getAllProducts() {
                     image: "/src/image/i.webp"  
                 },
                 {
-                    id: Generate(),
-                    title: item.name,
-                    price: item.price,
-                    description: item.description,
-                    isNew: item.isNew,
-                    image: item.image
+                    id: item.id || Generate(),
+                    title: item.title || "Суши",
+                    price: item.price || 0,
+                    description: item.description || "3 шт.",
+                    isNew: item.isNew || false,
+                    image: item.image || "/src/image/default.webp"
                 }
             ] });
         }, 1000);
