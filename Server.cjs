@@ -3,14 +3,17 @@ const server = new WebSocket.Server({ port: 5000 })
 const clients = []
 
 server.on('connection', (socket) => {
-    console.log('Клиент подключился')
+    console.log('Клиент подключился, всего:', clients.length + 1)
     clients.push(socket)
 
     socket.on('message', (message) => {
-        console.log('Сообщение от пользователя: ', message.toString())
+        console.log('Сообщение от клиента:', message.toString())
+        console.log('Отправляем всем, кроме отправителя...')
+        
         clients.forEach((client) => {
-            if (client.readyState === WebSocket.OPEN) {
+            if (client !== socket && client.readyState === WebSocket.OPEN) {
                 client.send(message.toString())
+                console.log('  → отправлено другому клиенту')
             }
         })
     })
@@ -21,6 +24,7 @@ server.on('connection', (socket) => {
         if (index !== -1) {
             clients.splice(index, 1)
         }
+        console.log('Осталось клиентов:', clients.length)
     })
 })
 

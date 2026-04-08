@@ -5,6 +5,7 @@ import CatalogPage from "./pages/CatalogPage/CatalogPage"
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage"
 import Login from "./pages/LoginPage/Login"
 import Auth from "./components/Auth/Auth";
+import HelperChat from "./pages/helperChat/HelperChat";
 
 function App() {
     const [items, setItems] = useState([])
@@ -18,10 +19,6 @@ function App() {
         socket.onopen = ()=>{
             console.log('Сервер подключен')
             connect = true
-        }
-
-        socket.onmessage = (event)=>{
-            console.log(`Сообщение сервера: ${event.data}`)
         }
 
         socket.onerror = (error)=>{
@@ -84,6 +81,9 @@ function App() {
                         element={<Auth />}
                     />
                 </Routes>
+
+
+                <HelperChat/>
             </div>
         </BrowserRouter>
     )
