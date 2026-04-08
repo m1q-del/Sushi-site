@@ -1,5 +1,5 @@
 import "./SushiItem.css"
-import Card from "../Card/card"
+import Card from "../Card/Card"
 import { Generate } from "../../generateId/GenerateId"
 
 export const sushiItems = [
