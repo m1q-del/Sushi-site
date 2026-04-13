@@ -1,10 +1,23 @@
-import { useState } from "react"
-import SushiItem, { sushiItems } from "../../components/SushiItem/SushiItem"
+import { useEffect, useState } from "react"
 import "./CatalogPage.css"
+import { getAllProducts } from "../../API/ProductsAPI"
+import SushiItem from '../../components/SushiItem/SushiItem'
+import useCartStore from "../../components/Basket/BasketFunction"
 
-const CatalogPage = ({ addItemsBasket }) => {
-    const [filter, setFilter] = useState('')
+const CatalogPage = () => {
     const [sort, setSort] = useState('')
+    const [products, setProducts] = useState([])
+
+    const addItemsBasket = useCartStore((state) => state.addBasketItem);
+
+    useEffect(()=>{
+        getAllProducts().then(response => {
+            if(response.success){
+                setProducts(response.products)
+            }
+        })
+    },[])
+
 
     const handleSort = (e) => {
         setSort(e.target.value)
@@ -26,10 +39,10 @@ const CatalogPage = ({ addItemsBasket }) => {
             </div>
 
             <div className="catalog-grid">
-                {sushiItems.map(sushi => (
+                {products.map(product => (
                     <SushiItem 
-                        key={sushi.id} 
-                        sushi={sushi}
+                        key={product.id} 
+                        sushi={product}
                         onAddToBasket={addItemsBasket}
                     />
                 ))}

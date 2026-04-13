@@ -1,28 +1,13 @@
 import "./Basket.css"
+import useCartStore from "./BasketFunction"
 
-const Basket = ({show, setShow, items, setItems}) => {
+const Basket = () => {
 
-    const hideBasket = () => {
-        setShow(false)
-    }
-
-    const removeItem = (productId) => {
-        setItems(prevItems => {
-            const updatedItems = prevItems.map(item => {
-                if (item.id === productId) {
-                    const newQuantity = item.quantity - 1
-                    return item.quantity - 1 > 0 ? { ...item, quantity: newQuantity } : null
-                }
-                return item
-            })
-            
-            return updatedItems.filter(item => item !== null)
-        })
-    }
-
-    const priceItems = () => {
-        return items.reduce((sum, item) => sum + (item.price * (item.quantity)), 0)
-    }
+    const show = useCartStore((state) => state.show);
+    const items = useCartStore((state) => state.items);
+    const removeItem = useCartStore((state) => state.removeItem);
+    const hideBasket = useCartStore((state) => state.hideBasket);
+    const totalPrice = useCartStore((state) => state.priceItems());
 
     return (
         <div>
@@ -52,7 +37,7 @@ const Basket = ({show, setShow, items, setItems}) => {
                                     })}
                                 </ul>
                                 <div className="basket-total">
-                                    <strong>Итого: {priceItems()}₽</strong>
+                                    <strong>Итого: {totalPrice}₽</strong>
                                 </div>
                             </>
                         )}

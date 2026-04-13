@@ -1,8 +1,11 @@
 import "./Header.css"
 import Basket from "../Basket/Basket"
 import { Link } from "react-router-dom"
+import useCartStore from "../Basket/BasketFunction"
 
-const Header = ({ show, setShow, items, setItems }) => {
+const Header = () => {
+    const items = useCartStore((state) => state.items);
+    const setShow = useCartStore((state) => state.setShow);
 
     const getTotalItemsCount = () => {
         return items.reduce((total, item) => total + (item.quantity || 1), 0)
@@ -41,12 +44,7 @@ const Header = ({ show, setShow, items, setItems }) => {
                                 Корзина ({getTotalItemsCount()})
                             </button>
 
-                            <Basket
-                                show={show}
-                                setShow={setShow}
-                                items={items}
-                                setItems={setItems}
-                            />
+                            <Basket />
                         </li>
                     </ul>
                 </div>

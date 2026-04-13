@@ -1,35 +1,5 @@
 import "./SushiItem.css"
 import Card from "../Card/Card"
-import { Generate } from "../../generateId/GenerateId"
-
-export const sushiItems = [
-    {
-        id:1,
-        title: "Суши",
-        price: 375,
-        description: "3 шт.",
-        isNew: false,
-        image: "/src/image/i.webp",
-    }, 
-    {
-        id:2,
-        title: "Суши",
-        price: 375,
-        description: "3 шт.",
-        isNew: true,
-        image: "/src/image/i.webp"
-    },
-    {
-        id:3,
-        title: "Суши",
-        price: 375,
-        description: "3 шт.",
-        isNew: false,
-        image: "/src/image/i.webp"  
-    },
-]
-
-
 const SushiItem = ({ sushi, onAddToBasket }) => {
     return (
         <Card
