@@ -1,16 +1,21 @@
 /* pages/CatalogPage/CatalogPage.css */
 
 .catalog-page {
-    padding: 80px 20px 40px; /* Добавляем отступ сверху для header */
-    max-width: 1200px;
+    padding: 80px 20px 40px;
+    max-width: 1400px;
     margin: 0 auto;
     min-height: 100vh;
     background-color: #f8f5f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Секция каталога */
 .catalog-section {
     margin-bottom: 60px;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .catalog-header {
@@ -20,6 +25,7 @@
     margin: 20px 0 30px;
     padding: 0 20px;
     position: relative;
+    width: 100%;
 }
 
 .catalog-header h1 {
@@ -85,33 +91,48 @@
     box-shadow: 0 0 0 2px rgba(196, 162, 122, 0.2);
 }
 
-/* Сетка для карточек - ОСНОВНОЙ СТИЛЬ */
+/* Сетка для карточек - улучшенное центрирование */
 .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     padding: 20px;
+    width: 100%;
     justify-items: center;
     align-items: start;
 }
 
-/* Дополнительный контейнер для карточек, если используется */
-.catalog-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 20px;
+/* Центрирование каждой карточки */
+.catalog-grid > * {
+    width: 100%;
+    max-width: 320px;
+    justify-self: center;
 }
 
-/* Адаптивность */
-@media (max-width: 1024px) {
-    .catalog-page {
-        padding: 80px 20px 40px;
+/* Адаптивность для разных размеров экрана */
+@media (max-width: 1200px) {
+    .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
     }
     
+    .catalog-section {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 900px) {
     .catalog-grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 25px;
+    }
+    
+    .catalog-header {
+        padding: 0 15px;
+    }
+    
+    .catalog-header h1 {
+        font-size: 26px;
     }
 }
 
@@ -132,15 +153,26 @@
         transform: translateX(-50%);
     }
     
-    .catalog-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 20px;
-        padding: 10px;
-    }
-    
     .catalog-filter {
         width: 100%;
         justify-content: center;
+    }
+    
+    .catalog-section {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .catalog-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 15px;
+        justify-items: center;
+    }
+    
+    .catalog-grid > * {
+        max-width: 320px;
     }
 }
 
@@ -150,7 +182,6 @@
     }
     
     .catalog-grid {
-        grid-template-columns: 1fr;
         gap: 20px;
         padding: 10px;
     }
