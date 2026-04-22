@@ -1,62 +1,234 @@
-.catalog {
+/* pages/CatalogPage/CatalogPage.css */
+
+.catalog-page {
+    padding: 80px 20px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: #f8f5f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Секция каталога */
+.catalog-section {
+    margin-bottom: 60px;
+    width: 100%;
     max-width: 1200px;
-    margin: 80px auto 0;
-    padding: 0 20px;
 }
 
 .catalog-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    padding: 20px 0;
-    border-bottom: 1px solid #f0f0f0;
+    margin: 20px 0 30px;
+    padding: 0 20px;
+    position: relative;
+    width: 100%;
 }
 
-.catalog-title {
-    font-size: 32px;
+.catalog-header h1 {
+    font-size: 28px;
     color: #2c3e50;
     margin: 0;
+    font-weight: 700;
+    position: relative;
 }
 
-.catalog-controls {
+.catalog-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #e74c3c, #c4a27a);
+    border-radius: 2px;
+}
+
+.catalog-filter {
     display: flex;
-    gap: 15px;
+    gap: 12px;
+    align-items: center;
 }
 
 .filter-btn {
-    background: none;
+    padding: 8px 20px;
+    background-color: white;
     border: 1px solid #e0e0e0;
     border-radius: 20px;
-    padding: 8px 20px;
-    font-size: 14px;
     cursor: pointer;
-    color: #2c3e50;
     transition: all 300ms ease;
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 500;
 }
 
 .filter-btn:hover {
     background-color: #f8f5f0;
     border-color: #c4a27a;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .sort-select {
+    padding: 8px 20px;
     border: 1px solid #e0e0e0;
     border-radius: 20px;
-    padding: 8px 20px;
+    background-color: white;
+    cursor: pointer;
     font-size: 14px;
     color: #2c3e50;
-    background: white;
-    cursor: pointer;
+    transition: all 300ms ease;
+    font-weight: 500;
 }
 
 .sort-select:hover {
     border-color: #c4a27a;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+.sort-select:focus {
+    outline: none;
+    border-color: #c4a27a;
+    box-shadow: 0 0 0 2px rgba(196, 162, 122, 0.2);
+}
+
+/* ========== ТОВАРЫ В ОДНУ СТРОКУ ========== */
 .catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     gap: 30px;
-    margin-top: 20px;
+    padding: 20px;
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+/* Стили для скролла */
+.catalog-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.catalog-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.catalog-grid::-webkit-scrollbar-thumb {
+    background: #c4a27a;
+    border-radius: 10px;
+}
+
+.catalog-grid::-webkit-scrollbar-thumb:hover {
+    background: #e74c3c;
+}
+
+/* Карточки товаров - фиксированная ширина */
+.catalog-grid > * {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .catalog-page {
+        padding: 70px 15px 30px;
+    }
+    
+    .catalog-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .catalog-header h1::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .catalog-filter {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .catalog-section {
+        max-width: 100%;
+    }
+    
+    .catalog-grid {
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .catalog-grid > * {
+        width: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-page {
+        padding: 60px 10px 20px;
+    }
+    
+    .catalog-grid {
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .catalog-grid > * {
+        width: 240px;
+    }
+    
+    .catalog-header h1 {
+        font-size: 24px;
+    }
+    
+    .filter-btn, .sort-select {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+}
+
+/* Стили для пустого состояния */
+.catalog-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #7f8c8d;
+}
+
+.catalog-empty h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.catalog-empty p {
+    font-size: 16px;
+}
+
+/* Стили для загрузки */
+.catalog-loading {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f0f0f0;
+    border-top: 3px solid #e74c3c;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

@@ -1,0 +1,47 @@
+/* OrderCheck.css */
+
+.order-form-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-form-container p {
+    margin: 15px 0 5px;
+    color: #333;
+    font-weight: 500;
+}
+
+.order-form-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.order-form-container input:focus {
+    outline: none;
+    border-color: #e74c3c;
+}
+
+.order-btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.order-btn:hover {
+    background: #c0392b;
+}

@@ -6,6 +6,8 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage"
 import Login from "./pages/LoginPage/Login"
 import Auth from "./components/Auth/Auth";
 import HelperChat from "./pages/helperChat/HelperChat";
+import OrderForm from "./components/orderCheck/OrderCheck";
+
 
 function App() {
     const [items, setItems] = useState([])
@@ -38,6 +40,12 @@ function App() {
                         path="/auth"
                         element={<Auth />}
                     />
+
+                  <Route
+                        path="/OrderCheck"
+                        element={<OrderForm />}
+                    />
+
                 </Routes>
 
                 <HelperChat/>

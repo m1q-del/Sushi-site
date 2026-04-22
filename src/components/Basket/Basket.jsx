@@ -1,13 +1,21 @@
+import { useNavigate } from "react-router-dom"
 import "./Basket.css"
 import useCartStore from "./BasketFunction"
 
 const Basket = () => {
+    const navigate = useNavigate()
 
     const show = useCartStore((state) => state.show);
     const items = useCartStore((state) => state.items);
     const removeItem = useCartStore((state) => state.removeItem);
     const hideBasket = useCartStore((state) => state.hideBasket);
     const totalPrice = useCartStore((state) => state.priceItems());
+
+    const handleOrder = ()=>{
+        hideBasket()
+        const path = '/OrderCheck'
+        navigate(path)
+    }
 
     return (
         <div>
@@ -38,6 +46,10 @@ const Basket = () => {
                                 </ul>
                                 <div className="basket-total">
                                     <strong>Итого: {totalPrice}₽</strong>
+                                    <button
+                                    onClick={handleOrder}
+                                    >
+                                        Заказать</button>
                                 </div>
                             </>
                         )}

@@ -1,8 +1,10 @@
 import { create } from "zustand";
+import { Generate } from "../../generateId/GenerateId";
 
 const useCartStore = create((set, get) => ({
     items: [],
     show: false,
+    orderPlaced:false,
 
     addBasketItem: (product) => set((state) => {
         const existingItem = state.items.find(item => item.id === product.id);
@@ -22,6 +24,7 @@ const useCartStore = create((set, get) => ({
         }
     }),
 
+
     removeItem: (productId) => set((state) => {
         const updatedItems = state.items.map(item => {
             if (item.id === productId) {
@@ -39,6 +42,47 @@ const useCartStore = create((set, get) => ({
     priceItems: () => {
         return get().items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     },
+
+
+    createOrder: (userData) =>{
+        return new Promise((resolve, reject) => {
+            const state = get()
+            const totalPriceOrder = state.priceItems()
+
+            if(state.items.length ===0){
+                reject({ status: 400, message: "Корзина пуста" });
+                return;
+            } 
+
+            if(userData.name.length === 0 || userData.phone.length === 0){
+                reject({ status: 400, message: "Заполните все поля" });
+                return;
+            }
+
+            setTimeout(()=>{
+                const order = {
+                idOrder: Generate(),
+                items:state.items,
+                totalPrice: totalPriceOrder,
+                user: userData,
+                number: `ORD-${Date.now()}`
+            }
+
+            set({
+                items:[],
+                orderPlaced: true
+            })
+
+            resolve({
+                success:true,
+                order:`ORD-${Date.now()}`,
+                message: "Заказ успешно оформлен"
+            })
+            },1000)
+        })
+    },
+
+    cleanOrder: ()=>set({orderPlaced:false}),
 
     setShow: (value) => set({ show: value }),
     hideBasket: () => set({ show: false })
